@@ -1,59 +1,154 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# DibiTech Backend API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+DibiTech Backend is a REST API for the DibiTech digital product marketplace.
 
-## About Laravel
+The API handles authentication, users, products, categories, shopping carts, orders, seller management, and payment processing.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Authentication
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- User registration
+- User login
+- User logout
+- Token-based authentication using Laravel Sanctum
 
-## Learning Laravel
+### Products
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- Get all products
+- Get product details
+- Create products
+- Update products
+- Delete products
+- Seller product management
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Categories
 
-## Laravel Sponsors
+- Get product categories
+- Create categories
+- Update categories
+- Delete categories
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Cart
 
-### Premium Partners
+- Add products to cart
+- View cart
+- Remove products from cart
+- Checkout cart
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Orders
 
-## Contributing
+- Create orders
+- View orders
+- View order details
+- Cancel pending orders
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Payments
 
-## Code of Conduct
+- Create Midtrans Snap transactions
+- Process Midtrans webhook notifications
+- Update payment status
+- Update order status after successful payment
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### User Management
 
-## Security Vulnerabilities
+- View users
+- View user details
+- Delete users
+- Role-based access control
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## User Roles
 
-## License
+The API supports:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- `buyer`
+- `seller`
+- `admin`
+
+## Tech Stack
+
+- PHP
+- Laravel
+- Laravel Sanctum
+- MySQL
+- Midtrans Snap
+- REST API
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/anggrainyanggi40-bot/dibitech-marketplace-backend.git
+```
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Create the environment file:
+
+```bash
+cp .env.example .env
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+Configure the database in `.env`:
+
+```env
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+Configure Midtrans:
+
+```env
+MIDTRANS_SERVER_KEY=your_server_key
+MIDTRANS_CLIENT_KEY=your_client_key
+MIDTRANS_IS_PRODUCTION=false
+```
+
+Run database migrations:
+
+```bash
+php artisan migrate
+```
+
+Start the Laravel development server:
+
+```bash
+php artisan serve
+```
+
+## API Authentication
+
+Protected endpoints use Laravel Sanctum.
+
+Authenticated requests must include:
+
+```text
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Payment Integration
+
+The API integrates with Midtrans Snap for payment processing.
+
+Payment status is updated through Midtrans webhook notifications after a transaction status changes.
+
+## Current Limitations
+
+- Digital product file upload and storage are not yet implemented.
+- Secure product downloads after purchase are planned for future development.
+
+## Author
+
+Dwi Pangestu Anggrainy

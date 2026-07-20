@@ -20,7 +20,7 @@ class OrderItem extends Model
         'price' => 'decimal:2',
     ];
 
-    public function orders()
+    public function order()
     {
         return $this->belongsTo(Order::class,'order_id');
     }

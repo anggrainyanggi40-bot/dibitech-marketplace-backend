@@ -41,4 +41,68 @@ class UserController extends Controller
         ]);
     }
 
+    public function destroy(Request $request, $id)
+{   // Cek apakah yang melakukan request adalah admin
+    if ($request->user()->role !== 'admin') {
+        return response()->json([
+            'success' => false,
+            'message' => 'Akses ditolak. Hanya admin yang dapat menghapus user.'
+        ], 403);
+    }
+
+
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json([
+            'success' => false,
+            'message' => 'User tidak ditemukan'
+        ], 404);
+    }
+
+    // Mencegah admin menghapus akun sendiri
+    if ($user->id === $request->user()->id) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Kamu tidak dapat menghapus akun sendiri'
+        ], 422);
+    }
+
+    $user->delete();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'User berhasil dihapus'
+    ]);
+}
+public function becomeSeller(Request $request)
+{
+    $user = $request->user();
+
+    if ($user->role === 'admin') {
+        return response()->json([
+            'success' => false,
+            'message' => 'Admin tidak dapat menjadi seller'
+        ], 422);
+    }
+
+    if ($user->role === 'seller') {
+        return response()->json([
+            'success' => true,
+            'message' => 'Kamu sudah terdaftar sebagai seller',
+            'data' => $user
+        ]);
+    }
+
+    $user->update([
+        'role' => 'seller'
+    ]);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Berhasil menjadi seller',
+        'data' => $user->fresh()
+    ]);
+}
+
 }
