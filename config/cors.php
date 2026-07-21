@@ -5,7 +5,11 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5173'],
+    'allowed_origins' => [
+    'http://localhost:5173',
+    'https://dibitech-frontend-4wir.vercel.app',
+    'https://dibitech-frontend-4wir-3cui1no1u-anggi1.vercel.app',
+],
 
     'allowed_origins_patterns' => [],
 
