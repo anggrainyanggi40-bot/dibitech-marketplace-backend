@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
             [
               'product_name' =>'Belajar SQL',
               'detail_product' =>'Ebook SQL dasar',
-              'seller_id'=>1,
+              'seller_id'=>2,
               'category_id'=>'6',
               'price'=>50000,
               'file_size'=>5,
@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
             [
               'product_name' =>'Notion Planner',
               'detail_product' =>'Daily productivity planner',
-              'seller_id'=>1,
+              'seller_id'=>2,
               'category_id'=>1,
               'price'=>45000,
               'file_size'=>100,
@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
             [
               'product_name' =>'Instagram Content Pack',
               'detail_product' =>'Marketing content templates',
-              'seller_id'=>3,
+              'seller_id'=>2,
               'category_id'=>2,
               'price'=>85000,
               'file_size'=>25,
@@ -46,7 +46,7 @@ class ProductSeeder extends Seeder
             [
               'product_name' =>'React Source Code',
               'detail_product' =>'Fullstack React project',
-              'seller_id'=>3,
+              'seller_id'=>2,
               'category_id'=>3,
               'price'=>150000,
               'file_size'=>500,
@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
             [
               'product_name' =>'Dashboard UI',
               'detail_product' =>'Modern UI Kit',
-              'seller_id'=>5,
+              'seller_id'=>2,
               'category_id'=>4,
               'price'=>75000,
               'file_size'=>20,
